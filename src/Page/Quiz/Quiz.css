@@ -1,0 +1,15 @@
+
+.Quiz__div{
+    display: flex !important;
+    flex-direction: row;
+}
+.body{
+    width: 100%;
+    background-color:aliceblue;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+}
+.sidenav{
+    width: 70px;
+}

@@ -1,0 +1,30 @@
+.Login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  top: 25%;
+  left: 37%;
+  position:absolute;
+  background-color: rgb(226, 231, 230);
+  width: 300px;
+  height: 100px;
+  padding: 10px;
+  border: 2px solid gray;
+  box-shadow: 2px;
+  border-radius: 5px;
+}
+.Login span{
+  display: flex;
+  justify-content: center;
+}
+.Login button{
+    display: flex;
+    justify-content: center;
+    width: 70px;
+    margin-top: 20px;
+    margin-left: 110px;
+    background-color: rgb(32, 235, 174);
+    border-radius: 5px;
+    color: white;
+}
