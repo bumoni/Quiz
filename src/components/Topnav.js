@@ -7,9 +7,6 @@ const Topnav=()=>{
     const {email,data,open,setOpen,setEmail,time,setTime}=useAuth();
     const [totalCorrect,setTotalCorrect]=useState(0);
     const [totalAttempt,setTotalAttempt]=useState(0);
-    const [hh,setHH]=useState(0);
-    const [mm,setMM]=useState(0);
-    const [ss,setSS]=useState(0);
     function handleSubmit(){
         setOpen(true);
         let t1=0;
@@ -30,12 +27,12 @@ const Topnav=()=>{
       if(!open){
        let interval = setInterval(() => {
             setTime((prevTime) => {
-              console.log(prevTime);
               const { hours, minutes, seconds } = prevTime;
 
               if (hours === 0 && minutes === 0 && seconds === 0) {
                 setOpen(true);
                 clearInterval(interval);
+                return prevTime;
               } else {
 
                 if (seconds === 0) {
@@ -50,9 +47,9 @@ const Topnav=()=>{
               }
             });
         }, 1000);
-     return () => clearInterval(interval);
+      return () => clearInterval(interval);
     }
-    })
+    },[open, setTime])
     return (
         <div
            style={{
@@ -63,12 +60,11 @@ const Topnav=()=>{
             borderBottom:"1px solid",
             }}
         >
-            <div
+            {open===true&&<div
                style={{
                    position:'absolute',
                    top:"7%",
                    backgroundColor:"#acf2f0",
-                   display:open?true:"none",
                    height:"200px",
                    width:"100%",
                    zIndex:"2",
@@ -101,15 +97,25 @@ const Topnav=()=>{
                 >
                    <button
                     style={{
-                        backgroundColor:"green",
+                        backgroundColor:"red",
                         color:"white",
                         borderRadius:"5px",
                         border:"none",
                     }}
                     onClick={()=>{setEmail("");localStorage.clear();setOpen(false)}}
                    >Confirm and Exit</button>
+                   {(time.hours || time.minutes || time.seconds) &&<button
+                    style={{
+                        backgroundColor:"yellow",
+                        color:"red",
+                        borderRadius:"5px",
+                        border:"none",
+                        marginLeft:"20px",
+                    }}
+                    onClick={()=>{setOpen(false)}}
+                   >Resume Test</button>}
                </div>
-            </div>
+            </div>}
             <span
             style={{
                 height:"100%",

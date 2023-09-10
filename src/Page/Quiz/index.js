@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState ,lazy,Suspense} from "react";
 import { useAuth } from "../../components/Authentication";
 import Sidenav from "../../components/Sidenav";
 import Topnav from "../../components/Topnav";
@@ -8,7 +8,6 @@ const Quiz=()=>{
     async function fetchData(){
         const res= await fetch("https://opentdb.com/api.php?amount=20")
         const temp = await res.json();
-        console.log(temp);
         setQuestion(temp.results[0])
         temp.results.map((ele,i)=>{
             ele["ans"]=null;
@@ -42,7 +41,7 @@ const Quiz=()=>{
                <div className="sidenav">
                   <Sidenav element={data}/>
                 </div>
-                   <div className="body">
+                <div className="body">
                       <span
                          style={{
                              margin:"20px"
@@ -64,9 +63,8 @@ const Quiz=()=>{
                          })}
                         </div>
                       </form>
-                   </div>
+                </div>
             </div>
-
         </div>
     )
 }

@@ -8,8 +8,8 @@ export const Authprovider=({children})=>{
     const [email,setEmail]=useState(localStorage.getItem("email")??"");
     const [question,setQuestion]=useState({});
     const [data,setData]=useState([]);
-    const [open,setOpen]=useState(null);
-    const [time,setTime]=useState({ hours: 0, minutes: 0, seconds: 10 });
+    const [open,setOpen]=useState(false);
+    const [time,setTime]=useState({ hours: 0, minutes: 30, seconds: 0 });
     return(
       <AuthContex.Provider
         value={{

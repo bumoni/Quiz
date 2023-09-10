@@ -3,14 +3,15 @@ import { useAuth } from "../../components/Authentication";
 import "./Login.css"
 
 const Login=()=>{
-    const {setEmail}=useAuth();
+    const {setEmail,setOpen,setTime}=useAuth();
     const [tempEmail,setTempEmail]=useState("")
     function handleSubmit(){
         // if(/^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/.test(tempEmail)){
        if(true){
            setEmail(tempEmail);
            localStorage.setItem("email",tempEmail);
-
+           setOpen(false);
+           setTime({hours: 0, minutes: 30, seconds: 0 });
         }
         else{
             alert("Not a valid email");
